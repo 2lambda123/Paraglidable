@@ -81,6 +81,7 @@ def remove_first_code_block(md_file):
 
 	with open(md_file, "w") as fout:
 		fout.write(mdcontent)
+		fout.write("\n")
 	
 
 def add_header_note(md_file, text):
@@ -92,7 +93,6 @@ def add_header_note(md_file, text):
 
 	with open(md_file, "w") as fout:
 		fout.write(mdcontent)
-
 
 
 # add "doc/" to the beginning of each path (img or link)
