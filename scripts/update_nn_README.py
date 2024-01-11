@@ -84,12 +84,12 @@ def remove_first_code_block(md_file):
 		fout.write("\n")
 	
 
-def add_header_note(md_file, text):
+def add_header_note(md_file, header_note):
 
 	with open(md_file, "r") as fin:
 		mdcontent = fin.read()
 	
-	mdcontent = "<sup>"+ text +"</sup>\n"+ mdcontent
+	mdcontent = "<sup>"+ header_note +"</sup>\n"+ mdcontent
 
 	with open(md_file, "w") as fout:
 		fout.write(mdcontent)
