@@ -1,7 +1,7 @@
 import sys, os, re, shutil, subprocess
 
 def code_removed(md_content):
-	return re.sub("(```.*?```)", "", md_content, flags=re.S)
+	return re.sub("```[\s\S]*?```", "", md_content, flags=re.S)
 
 def generate_notebook(src_file, dst_file):
 	filesdirname = os.path.basename(dst_file).split(".")[0] +"_files"
