@@ -11,8 +11,8 @@ class FlightPoint
 public:
     float lat, lon, alt;
 
-    FlightPoint(float lat, float lon, float alt);
-    FlightPoint() {}
+    FlightPoint(float lat, float lon, float alt) noexcept; // Add noexcept specifier for exception safety
+    FlightPoint() noexcept {} // Add noexcept specifier for exception safety
 };
 
 class Flight
@@ -24,7 +24,7 @@ class Flight
 public:
     std::vector<FlightPoint> m_track;
 
-    Flight(QString filename);
+    Flight(QString filename) noexcept; // Add input validation and error handling // Add noexcept specifier for exception safety
     int size() {return (int)m_track.size(); }
 };
 
