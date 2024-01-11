@@ -65,7 +65,7 @@ def convert_latex_to_SVG(md_file, dst_dir):
 	for ke, equation in enumerate(equations):
 		print(equation, "\n")
 
-		os.system("tex2svg '"+ equation +"' > "+ dst_dir +"/equation_%d.svg"%ke)
+		os.system("latex2svg '"+ equation +"' > "+ dst_dir +"/equation_%d.svg"%ke)
 		mdcontent = mdcontent.replace("$"+equation+"$", "![]("+ os.path.basename(md_file).replace(".md", "_files") +"/equation_%d.svg)"%ke)
 
 	with open(md_file, "w") as fout:
