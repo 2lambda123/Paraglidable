@@ -110,7 +110,7 @@ def fix_paths(md_file):
 			mdcontent = mdcontent.replace(l, l.replace("](", "](docs/"))
 
 	# src="path"
-	mdcontent = re.sub("src=\"([^\"]+)\"", "src=\"docs/\\1\"", mdcontent)
+	mdcontent = re.sub("src=\"docs/\1\"", "src=\"docs/\\1\"", mdcontent)
 
 	with open(md_file, "w") as fout:
 		fout.write(mdcontent)	
