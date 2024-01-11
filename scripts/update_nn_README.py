@@ -117,7 +117,8 @@ def fix_paths(md_file):
 
 
 
-def collapsed_code(md_file):
+def collapsed_code(md_file):# Update the collapsed_code function to add collapsible code blocks to the README.md file.
+    
 
 	with open(md_file, "r") as fin:
 		mdcontent = fin.read()
