@@ -29,8 +29,8 @@ public:
     {
     }
 
-    QString getFilename(float lat, float lon); // debug, find holes
-    int getElevation(float lat, float lon);
+    QString getFilename(float lat, float lon) noexcept; // Add noexcept specifier for exception safety
+    int getElevation(float lat, float lon) noexcept; // Add noexcept specifier for exception safety
 };
 
 
@@ -64,6 +64,7 @@ public:
     void loadTiles();
     float computeMountainess(int tx, int ty, int x, int y);
     void computeAllMountainessTiles();
+void handleMountainessError(QString errorMsg);
 
     // used for tiles drawing
     quint8 getMountainessValueInTile(std::vector<quint8> &data, int tx, int ty);
