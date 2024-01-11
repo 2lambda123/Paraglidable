@@ -4,7 +4,7 @@
 #include <QVariantMap>
 #include <QString>
 
-class Arguments
+class Arguments : public QObject
 {
 public:
     QString m_predictionFilename;
@@ -25,7 +25,7 @@ public:
     QString m_skippedTiles;
     bool    m_generateTranspaVersion;
 
-    Arguments(QString jsonFilename);
+    Arguments(QString jsonFilename) noexcept;
     void print();
 };
 
