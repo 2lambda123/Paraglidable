@@ -9,9 +9,15 @@ def generate_notebook(src_file, dst_file):
 		shutil.rmtree(os.path.dirname(os.path.abspath(src_file))+"/"+filesdirname)
 	except FileNotFoundError:
 		pass
-	p = subprocess.Popen(["jupyter", "nbconvert", os.path.basename(os.path.abspath(src_file)), "--to", "markdown", "--output", os.path.basename(dst_file)], cwd=os.path.dirname(os.path.abspath(src_file)))
-	p.wait()
-	shutil.move(os.path.dirname(os.path.abspath(src_file))+"/"+os.path.basename(dst_file), dst_file)
+	try:
+		p = subprocess.Popen(["jupyter", "nbconvert", os.path.basename(os.path.abspath(src_file)), "--to", "markdown", "--output", os.path.basename(dst_file)], cwd=os.path.dirname(os.path.abspath(src_file)))
+		p.wait()
+		if p.returncode != 0:
+			raise Exception("Notebook conversion failed")
+		shutil.move(os.path.dirname(os.path.abspath(src_file))+"/"+os.path.basename(dst_file), dst_file)
+	except Exception as e:
+		print("Notebook conversion failed:", str(e))
+		raise
 
 
 g_inner_links = []
@@ -35,7 +41,6 @@ def github_inner_link(link):
 	g_inner_links += [link]
 
 	return "#"+link
-
 def sort_sections_key(s):
 	return s[0]
 
