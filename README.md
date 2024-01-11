@@ -1,4 +1,4 @@
-<img src="www/imgs/logo/logo.svg" width="80" align="right" />
+<img src="imgs/logo/logo.svg" width="80" align="right" />
 
 # Paraglidable
 
