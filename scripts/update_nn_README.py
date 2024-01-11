@@ -41,7 +41,7 @@ def sort_sections_key(s):
 
 def generate_toc(md_file):
 	with open(md_file, "r") as fin:
-		mdcontent = fin.read()
+		    mdcontent = fin.read()
 	
 	mdcontent_code_removed = code_removed(mdcontent)
 	sections = [(match.span()[0], int(match.group(1)), match.group(2)) for match in re.finditer(r"<h([1-9]{1})>([^<]+)</h[1-9]{1}>", mdcontent_code_removed)] +\
