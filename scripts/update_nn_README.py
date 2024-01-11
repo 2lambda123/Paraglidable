@@ -6,12 +6,12 @@ def code_removed(md_content):
 def generate_notebook(src_file, dst_file):
 	filesdirname = os.path.basename(dst_file).split(".")[0] +"_files"
 	try:
-		shutil.rmtree(os.path.dirname(src_file)+"/"+filesdirname)
+		shutil.rmtree(os.path.dirname(os.path.abspath(src_file))+"/"+filesdirname)
 	except FileNotFoundError:
 		pass
-	p = subprocess.Popen(["jupyter", "nbconvert", os.path.basename(src_file), "--to", "markdown", "--output", os.path.basename(dst_file)], cwd=os.path.dirname(src_file))
+	p = subprocess.Popen(["jupyter", "nbconvert", os.path.basename(os.path.abspath(src_file)), "--to", "markdown", "--output", os.path.basename(dst_file)], cwd=os.path.dirname(os.path.abspath(src_file)))
 	p.wait()
-	shutil.move(os.path.dirname(src_file)+"/"+os.path.basename(dst_file), dst_file)
+	shutil.move(os.path.dirname(os.path.abspath(src_file))+"/"+os.path.basename(dst_file), dst_file)
 
 
 g_inner_links = []
